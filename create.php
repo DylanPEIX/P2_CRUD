@@ -9,11 +9,13 @@ if (!isset($_SESSION['username'])) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
     <div class="login-container">
         <h2>Create an account</h2>
@@ -32,7 +34,7 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <?php
-    if (!empty($_POST)){
+    if (!empty($_POST)) {
         include ('includes/db.php');
         echo "connection";
         $conn = connect();
@@ -45,7 +47,7 @@ if (!isset($_SESSION['username'])) {
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password']; // Variable name corrected from 'pwd' to 'password'
-
+    
         // Bind parameters
         $requete->bindParam(':email', $email);
         $requete->bindParam(':username', $username);
@@ -53,13 +55,14 @@ if (!isset($_SESSION['username'])) {
 
         // Execute the query
         $result = $requete->execute(); // No need to pass an array of arguments
-
+    
         if ($result) {
             echo "Data has been inserted successfully.";
         } else {
             echo "Error during data insertion.";
         }
-    } 
+    }
     ?>
 </body>
+
 </html>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
     <div class="login-container">
         <h2>Register</h2>
@@ -24,7 +26,7 @@
     </div>
 
     <?php
-    if (!empty($_POST)){
+    if (!empty($_POST)) {
         include ('includes/db.php');
         echo "connection";
         $conn = connect();
@@ -37,7 +39,7 @@
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password']; // Variable name corrected from 'pwd' to 'password'
-
+    
         // Bind parameters
         $requete->bindParam(':email', $email);
         $requete->bindParam(':username', $username);
@@ -45,17 +47,15 @@
 
         // Execute the query
         $result = $requete->execute(); // No need to pass an array of arguments
-
+    
         if ($result) {
             echo "Data has been inserted successfully.";
             header("location: welcome.php");
         } else {
             echo "Error during data insertion.";
         }
-    } 
+    }
     ?>
 </body>
+
 </html>
-
-
-
